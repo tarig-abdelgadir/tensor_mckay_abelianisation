@@ -1,0 +1,127 @@
+\documentclass{amsart}
+\usepackage[utf8]{inputenc}
+
+\usepackage{mymacros, stmaryrd, tikz, pstricks, pst-node, pst-text, pst-tree, subfigure, epsfig, psfrag}
+\usepackage{float}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{eg}[thm]{Example}
+
+\title{Tensor McKay: SL(2)}
+\author{Tarig Abdelgadir}
+\author{Joseph Karmazyn}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Balmer's result maybe interpreted as saying that derived equivalences between varieties are variations in tensor structure.
+
+This is repackaging of known results but we feel that viewing them under this light is potentially useful. 
+
+\section{Background and Notation}
+
+We fix a finite subgroups $G$ of $\SL(2,\bC)$.
+Such subgroups of $\SL(2,\bC)$ are labelled by simply laced Dynkin diagrams.
+We will label the root system and affine root system corresponding to $G$ by $\Delta$ and $\tilde{\Delta}$ respectively.
+Furthermore, we pick a set of simple roots for $\Delta$ and call them $\{\alpha_i\}$.
+The addition of the standard imaginary root $\alpha_0$ gives us an induced root system on $\tilde{\Delta}$.
+Entries of the corresponding generalised Cartan matrix will denoted
+$$c_{ij} := 2 \frac{\langle \alpha_i, \alpha_j\rangle}{\langle \alpha_j, \alpha_j\rangle}.$$
+
+We take $(Q,I)$ to be the McKay quiver with relations associated to $G$.
+One may identify the vertices of $Q$ with the simple roots $\alpha_i$ of $\tilde{\Delta}$.
+This, in particular, gives a distinguished vertex: namely the one corresponding to $\alpha_0$, we will call it $0$.
+The minimal positive integer vector in the kernel of the Cartan matrix gives us a dimension vector $\bfv=(v_i)$.
+We pick $\theta$ a stability parameter in the chamber corresponding to 0-generated stability conditions, for example $(-\sum_{i \neq 0} v_i,1, \ldots,1)$.
+The moduli space $\theta$-stable quiver representations of $Q$ of dimension vector $\bfv$ satisfying the relations given by $I$ will be denoted $\cM^\theta$.
+Note that this is naturally isomorphic to $G$-Hilb$(\bC^2)$.
+The space $\cM^\theta$ comes with tautological vector bundles $T_i$, one for each vertex.
+Our construction of $\cM^\theta$ ensures that $T_0$ is the trivial line bundle.
+We define $L_i$ to be the top wedge of the vector bundle $T_i$, i.e.\ $L_i := \det(T_i)$.
+
+The vector bundles $T_i$ generate the derived category of $\cM^\theta$.
+The following is a shirt exact sequence $$0 \rightarrow T_0^{\oplus (v_i-1)} \rightarrow T_i \rightarrow L_i \rightarrow 0.$$
+Therefore, the bundles $L_i$ generate the derived category too.
+We have a derived equivalence between $Y$ and $\bk Q/I$ taking $T_i$ to the projective at the corresponding vertex $P_i$.
+
+\section{Tensor structure on $\cM^\theta$}
+
+\begin{prop}
+The following complex is exact: \[
+0 \rightarrow L_0 \rightarrow L_i \oplus L_j \rightarrow L_i \otimes L_j \rightarrow 0.
+\]
+\end{prop}
+
+\begin{proof}
+This will enventually follow from the main result of this section.
+\end{proof}
+
+This is however boring. It doesn't tell us anything about VGIT.
+
+For the purposes of variation of stability parameter the building blocks of the complex above.
+
+We have a Hasse diagram of simple reflections in our Weyl group with $S_0$ as a quotient. 
+We also have a Hasse diagram of positive roots of the form $\alpha_0+\beta$ where $\beta \in \Lambda^+$. 
+These two Hasse diagram are combinatorially equivalent.
+We match them up to give us the following exact triangles
+$$\bigotimes_{\alpha_i<0} L_i^{\alpha_i} \longrightarrow \bigotimes_{\alpha_j>0} L_j^{\alpha_j} \longrightarrow \alpha(S_0) \longrightarrow \bigotimes_{\alpha_i<0} L_i^{\alpha_i}\,[1].$$
+
+Exactness of these triangles comes from the fact that this what happens to the trivial line bundle as I apply spherical twists going around
+
+The other chambers in the quiver stability conditions are Weyl chambers.
+A Weyl group element acts on $\alpha$ and by spherical twists on $\alpha(S_*)$ and we get another sequence.
+
+The triangle should be seen as expressing the left most term in terms of the other terms.
+For a purely geometric perspective we have that these morphisms are composites.
+
+Why is this enough? It's the tensor product of non-mutually vanishing sections.
+
+Why do they all show up? Because the top of their respective pyramids will have then in the right place.
+
+The simple reflections give us complexes of the form:
+$$ 0 \rightarrow \otimes_{j} \rho_j \otimes \rho_i^\vee \rightarrow \oplus_{j} \rho_j \rightarrow \rho_i \rightarrow 0$$ 
+or an exact triangle
+$$\rho_i \rightarrow \otimes_{j} \rho_j \otimes \rho_i^\vee \rightarrow S_i \rightarrow \rho_i[1].$$
+We will rigidify so that the trivial bundle is the unit. 
+The spherical twists to the side give the functor tensoring by the dual of the line bundle.
+
+The spherical twists applied to the simple at the star vertex form a Hasse diagram.
+
+\begin{lem}
+The following is an exact triangle in the derived category
+$$L_i \otimes L_j \rightarrow L_i \boxtimes L_j \rightarrow \sigma(S_*) \dashrightarrow L_i \otimes L_j\,[1].$$
+\end{lem}
+
+How does one build from the simple roots?
+
+The Hasse diagram also builds the extensions in a certain way, these will form the cones that we will use to describe the tensor structure.
+Note that these extensions are dependent on the stability parameter $\theta$.
+The determinants of the tautological bundles generate the category in question so it suffices to describe their mutual tensor products.
+The structure morphisms given by the walls of a given chamber completely describe the tensor product we want.
+
+Something about conjugating the Hasse diagram with the element of the reflection group in question.
+
+\section{Variation of tensor structure}
+
+\section{Moduli of tensor representations}
+
+We can look at the GIT problem given by using these structure maps as fields and act on them by the Gauge group.
+The point is that this will end up giving us the canonical bundle over the corresponding weighted projective lines in one chamber while we have the crepant resolution in another.
+
+The GIT problem on the one hand recovers the canonical bundle over the corresponding weighted projective line a partial resolution of the singualrity and the minimal resolution on the other.
+
+\section{Moduli of tensor stable representations}
+
+\end{document}
